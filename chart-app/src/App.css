@@ -3,6 +3,7 @@ body {
   background-color: #c4ddf7; /* Bootstrap light background */
   color: #343a40; /* Bootstrap dark text color */
   margin: 0;
+  
 }
 .chart-shadow-container {
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.5);
