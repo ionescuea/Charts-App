@@ -1,9 +1,9 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #c4ddf7; /* Bootstrap light background */
-  color: #343a40; /* Bootstrap dark text color */
+  background-color: #c4ddf7; 
+  color: #343a40; 
   margin: 0;
-  
+
 }
 .chart-shadow-container {
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.5);
@@ -15,6 +15,6 @@ body {
 .lowest-close-text {
   margin-top: 5px;
   font-size: 14px;
-  color: #dc3545; /* Bootstrap danger color for emphasis */
+  color: #dc3545; 
   font-weight: bold;
 }
