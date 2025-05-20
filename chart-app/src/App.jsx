@@ -10,10 +10,12 @@ const App = () => {
   const [symbol, setSymbol] = useState("AAPL");
   const [chartType, setChartType] = useState("line");
   const [minPoint, setMinPoint] = useState(null);
+  const [loading, setLoading] = useState(false); 
 
   const API_KEY = "53c411ab1dd9b6d3f82bb8704686d6a1";
 
   const fetchData = (stockSymbol) => {
+    setLoading(true); 
     axios
       .get(
         `http://api.marketstack.com/v1/eod?access_key=${API_KEY}&symbols=${stockSymbol}&limit=30`
@@ -34,11 +36,13 @@ const App = () => {
         setData(stockData);
         setMinPoint(min);
       })
-      .catch((err) => console.error("Error fetching data:", err));
+      .catch((err) => console.error("Error fetching data:", err))
+      .finally(() => setLoading(false)); 
   };
 
   useEffect(() => {
-    fetchData(symbol);
+    const timeoutId = setTimeout(() => fetchData(symbol), 500); 
+    return () => clearTimeout(timeoutId); 
   }, [symbol]);
 
   const CustomTooltip = ({ active, payload, label }) => {
@@ -63,6 +67,10 @@ const App = () => {
   };
 
   const renderChart = () => {
+    if (loading) {
+      return <div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div>;
+    }
+
     switch (chartType) {
       case "bar":
         return (
@@ -138,7 +146,7 @@ const App = () => {
 
         {renderChart()}
 
-        {minPoint && (
+        {minPoint && !loading && (
           <p className="mt-3 text-danger">
             Lowest close: ${minPoint.close.toFixed(2)} on{" "}
             {new Date(minPoint.date).toLocaleDateString()}
