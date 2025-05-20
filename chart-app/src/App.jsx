@@ -18,7 +18,7 @@ const App = () => {
     setLoading(true); 
     axios
       .get(
-        `http://api.marketstack.com/v1/eod?access_key=${API_KEY}&symbols=${stockSymbol}&limit=30`
+        `https://api.marketstack.com/v1/eod?access_key=${API_KEY}&symbols=${stockSymbol}&limit=30`
       )
       .then((res) => {
         const stockData = res.data.data
