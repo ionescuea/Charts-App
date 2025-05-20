@@ -102,15 +102,16 @@ const App = () => {
   return (
     <div className="d-flex justify-content-center align-items-center mt-5">
       <div className="text-center">
-        <h2 className="mb-4">{symbol} Stock Price - Last 30 Days</h2>
+        <h2 className="mb-4">{symbol} Stock Price</h2>
+        <p className="mt-2 mb-3 text-muted">Last 30 Days</p>
 
-        <div className="d-flex justify-content-center gap-3 mb-4">
+        <div className="d-flex justify-content-center gap-5 mb-4">
           <div>
-            <label htmlFor="stockSelect" className="form-label">
-              Choose a stock:
-            </label>
+            {/* <label htmlFor="stockSelect" className="form-label">
+              Choose stock:
+            </label> */}
             <select
-              className="form-select"
+              className="form-select shadow"
               id="stockSelect"
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
@@ -128,11 +129,11 @@ const App = () => {
           </div>
 
           <div>
-            <label htmlFor="chartType" className="form-label">
+            {/* <label htmlFor="chartType" className="form-label">
               Chart type:
-            </label>
+            </label> */}
             <select
-              className="form-select"
+              className="form-select shadow"
               id="chartType"
               value={chartType}
               onChange={(e) => setChartType(e.target.value)}
@@ -147,7 +148,7 @@ const App = () => {
         {renderChart()}
 
         {minPoint && !loading && (
-          <p className="mt-3 text-danger">
+          <p className="text-danger mt-4 font-weight-bolder lowest-close-text">
             Lowest close: ${minPoint.close.toFixed(2)} on{" "}
             {new Date(minPoint.date).toLocaleDateString()}
           </p>
