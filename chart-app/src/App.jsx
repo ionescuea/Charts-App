@@ -99,63 +99,55 @@ const App = () => {
     }
   };
 
-  return (
-    <div className="d-flex justify-content-center align-items-center mt-5">
-      <div className="text-center">
-        <h2 className="mb-4">{symbol} Stock Price</h2>
-        <p className="mt-2 mb-3 text-muted">Last 30 Days</p>
+return (
+  <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="w-100" style={{ maxWidth: "900px" }}>
+      <h1 className="text-center mb-2 mt-4 fw-bold">{symbol} Stock Price</h1>
+      <p className="text-center text-muted mb-5">Last 30 Days</p>
 
-        <div className="d-flex justify-content-center gap-5 mb-4">
-          <div>
-            {/* <label htmlFor="stockSelect" className="form-label">
-              Choose stock:
-            </label> */}
-            <select
-              className="form-select shadow"
-              id="stockSelect"
-              value={symbol}
-              onChange={(e) => setSymbol(e.target.value)}
-            >
-              <option value="AAPL">Apple (AAPL)</option>
-              <option value="GOOGL">Google (GOOGL)</option>
-              <option value="MSFT">Microsoft (MSFT)</option>
-              <option value="AMZN">Amazon (AMZN)</option>
-              <option value="TSLA">Tesla (TSLA)</option>
-              <option value="NFLX">Netflix (NFLX)</option>
-              <option value="META">Meta (FB)</option>
-              <option value="NVDA">NVIDIA (NVDA)</option>
-              <option value="DIS">Disney (DIS)</option>
-            </select>
-          </div>
-
-          <div>
-            {/* <label htmlFor="chartType" className="form-label">
-              Chart type:
-            </label> */}
-            <select
-              className="form-select shadow"
-              id="chartType"
-              value={chartType}
-              onChange={(e) => setChartType(e.target.value)}
-            >
-              <option value="line">Line Chart</option>
-              <option value="bar">Bar Chart</option>
-              <option value="area">Area Chart</option>
-            </select>
-          </div>
+      <div className="row justify-content-center gy-3 mb-4">
+        <div className="col-12 col-sm-6 col-md-4">
+          <select
+            className="form-select shadow bg-secondary fw-bold text-center border border-2 border-dark text-white"
+            value={symbol}
+            onChange={(e) => setSymbol(e.target.value)}
+          >
+            <option value="AAPL">Apple (AAPL)</option>
+            <option value="GOOGL">Google (GOOGL)</option>
+            <option value="MSFT">Microsoft (MSFT)</option>
+            <option value="AMZN">Amazon (AMZN)</option>
+            <option value="TSLA">Tesla (TSLA)</option>
+            <option value="NFLX">Netflix (NFLX)</option>
+            <option value="META">Meta (FB)</option>
+            <option value="NVDA">NVIDIA (NVDA)</option>
+            <option value="DIS">Disney (DIS)</option>
+          </select>
         </div>
 
-        {renderChart()}
-
-        {minPoint && !loading && (
-          <p className="text-danger mt-4 font-weight-bolder lowest-close-text">
-            Lowest close: ${minPoint.close.toFixed(2)} on{" "}
-            {new Date(minPoint.date).toLocaleDateString()}
-          </p>
-        )}
+        <div className="col-12 col-sm-6 col-md-4">
+          <select
+            className="form-select shadow bg-secondary fw-bold text-center border border-2 border-dark text-white"
+            value={chartType}
+            onChange={(e) => setChartType(e.target.value)}
+          >
+            <option value="line">Line Chart</option>
+            <option value="bar">Bar Chart</option>
+            <option value="area">Area Chart</option>
+          </select>
+        </div>
       </div>
+
+      <div className="d-flex justify-content-center">{renderChart()}</div>
+
+      {minPoint && !loading && (
+        <p className="text-center text-danger mt-4 fw-bold">
+          Lowest close: ${minPoint.close.toFixed(2)} on{" "}
+          {new Date(minPoint.date).toLocaleDateString()}
+        </p>
+      )}
     </div>
-  );
+  </div>
+);
 };
 
 export default App;
