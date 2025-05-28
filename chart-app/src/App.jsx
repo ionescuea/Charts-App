@@ -12,7 +12,7 @@ const App = () => {
   const [minPoint, setMinPoint] = useState(null);
   const [loading, setLoading] = useState(false); 
 
-  const API_KEY = "53c411ab1dd9b6d3f82bb8704686d6a1";
+  const API_KEY = "b4e86d47c250c0ef1f5015c44b56e09b";
 
   const fetchData = (stockSymbol) => {
     setLoading(true); 
