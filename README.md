@@ -1,5 +1,4 @@
 # Charts-App
-Charts
 
 ## Description
 
